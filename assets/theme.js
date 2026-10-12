@@ -335,7 +335,14 @@
   document.querySelectorAll("[data-slide]").forEach(function (el) {
     el.addEventListener("click", function () {
       var track = document.querySelector(el.getAttribute("data-slide"));
-      if (track) track.scrollBy({ left: Number(el.getAttribute("data-dir")) * track.clientWidth * 0.8, behavior: "smooth" });
+      if (!track || !track.children.length) return;
+      var left = track.scrollLeft;
+      var current = 0;
+      Array.prototype.forEach.call(track.children, function (card, index) {
+        if (card.offsetLeft <= left + 8) current = index;
+      });
+      var next = Math.max(0, Math.min(track.children.length - 1, current + Number(el.getAttribute("data-dir"))));
+      track.scrollTo({ left: track.children[next].offsetLeft, behavior: "smooth" });
     });
   });
 
