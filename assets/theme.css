@@ -230,8 +230,8 @@ h1, h2, h3 { font-family: 'Barlow Condensed', Impact, sans-serif; text-transform
 
 @media (max-width: 1000px) {
   .arrival-card { flex-basis: calc((100% - 18px) / 2); }
-  .categories-track { display: flex; overflow-x: auto; }
-  .category-card { flex: 0 0 46%; }
+  .categories-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 18px; }
+  .category-card { flex: 0 0 calc((100% - 18px) / 2); scroll-snap-align: start; }
   .category-arrow { display: grid; }
   .sellers-grid, .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -266,7 +266,8 @@ h1, h2, h3 { font-family: 'Barlow Condensed', Impact, sans-serif; text-transform
   .hero h1 { font-size: clamp(56px, 16vw, 80px); }
   .hero-content > p { margin-inline: auto; }
   .eyebrow, .hero-actions { justify-content: center; }
-  .arrival-card { flex-basis: 100%; }
+  .arrival-card { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
+  .category-card { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
   .arrival-photo, .seller-photo, .product-photo { height: 240px; }
   .sellers-grid, .products-grid { grid-template-columns: 1fr; }
   .listino-row { grid-template-columns: 56px 1fr; padding: 22px 0; }
