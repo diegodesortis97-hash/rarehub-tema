@@ -1,0 +1,10 @@
+<script>
+window.RH_ASSETS = {
+  {% assign names = 'logo-header.png,logo-lockup.png,logo-onepiece.png,logo-pokemon.png,logo-fusion.png,logo-riftbound.png,rarehub-hero.jpg,op17-box.png,pkmn-pitch-box.png,db-fb10-box.png,rift-vendetta-box.png,one-piece-bustina.webp,op-pack.jpg,op-case.jpg,op-single.jpg,pkmn-pack.jpg,pkmn-case.jpg,pkmn-single.jpg,pkmn-etb.jpg,db-pack.jpg,db-case.jpg,db-single.jpg,rift-pack.jpg,rift-case.jpg,rift-single.jpg,pay-visa.png,pay-mastercard.png,pay-amex.png,pay-apple.png,pay-paypal.png,whatsapp.svg' | split: ',' %}
+  {% for name in names %}{{ name | json }}: {{ name | asset_url | json }}{% unless forloop.last %},{% endunless %}{% endfor %}
+};
+window.RH_VARIANTS = {
+  {% assign handles = 'op17-bustina,op17-box,op17-case,op17-singola,pitch-black-bustina,pitch-black-box,pitch-black-case,pitch-black-singola,celebration-etb,fb10-bustina,fb10-box,fb10-case,fb10-singola,vendetta-bustina,vendetta-box,vendetta-case,vendetta-singola' | split: ',' %}
+  {% for handle in handles %}{{ handle | json }}: {% if all_products[handle].id %}{{ all_products[handle].selected_or_first_available_variant.id }}{% else %}null{% endif %}{% unless forloop.last %},{% endunless %}{% endfor %}
+};
+</script>
