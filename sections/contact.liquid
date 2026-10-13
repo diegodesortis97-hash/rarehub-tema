@@ -1,0 +1,160 @@
+<section id="scrivici" class="section write-section">
+  <div class="wrap write-grid">
+    <div>
+      <p class="section-kicker"><span class="copy-it">{{ section.settings.kicker }}</span><span class="copy-en">{{ section.settings.kicker_en }}</span></p>
+      <h2><span class="copy-it">{{ section.settings.title }}</span><span class="copy-en">{{ section.settings.title_en }}</span></h2>
+      <p><span class="copy-it">{{ section.settings.body }}</span><span class="copy-en">{{ section.settings.body_en }}</span></p>
+      <a class="wa-link" href="{{ section.settings.whatsapp }}" target="_blank" rel="noreferrer"><img src="{{ 'whatsapp.svg' | asset_url }}" alt="">WhatsApp</a>
+    </div>
+    {% form 'contact', id: 'contatto', class: 'write-form' %}
+      {% if form.posted_successfully? %}
+        <p class="news-ok">{{ section.settings.sent }}</p>
+      {% else %}
+        <label><span class="copy-it">{{ section.settings.name }}</span><span class="copy-en">{{ section.settings.name_en }}</span><input name="contact[name]" required autocomplete="name"></label>
+        <label><span class="copy-it">{{ section.settings.email }}</span><span class="copy-en">{{ section.settings.email_en }}</span><input name="contact[email]" type="email" required autocomplete="email"></label>
+        <label><span class="copy-it">{{ section.settings.reason }}</span><span class="copy-en">{{ section.settings.reason_en }}</span><select name="contact[motivo]" data-reason><option value="tornei">{{ section.settings.opt_events }}</option><option value="vendi">{{ section.settings.opt_sell }}</option><option value="generale">{{ section.settings.opt_general }}</option></select></label>
+        <label><span class="copy-it">{{ section.settings.details }}</span><span class="copy-en">{{ section.settings.details_en }}</span><textarea name="contact[body]" required rows="6"></textarea></label>
+        <button type="submit"><span class="copy-it">{{ section.settings.send }}</span><span class="copy-en">{{ section.settings.send_en }}</span></button>
+      {% endif %}
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Scrivici",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Occhiello",
+      "default": "Scrivici"
+    },
+    {
+      "type": "text",
+      "id": "kicker_en",
+      "label": "Occhiello in inglese",
+      "default": "Write to us"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titolo",
+      "default": "Parliamo di tornei e di collezioni."
+    },
+    {
+      "type": "text",
+      "id": "title_en",
+      "label": "Titolo in inglese",
+      "default": "Let’s talk about tournaments and collections."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Testo",
+      "default": "Il modulo serve per i tornei, per una domanda o per proporre una collezione. Se vendi, indica giochi, quantità, condizioni e un recapito."
+    },
+    {
+      "type": "textarea",
+      "id": "body_en",
+      "label": "Testo in inglese",
+      "default": "Use the form for tournaments, a question, or to offer a collection. If you are selling, include the games, quantity, condition and a contact."
+    },
+    {
+      "type": "text",
+      "id": "whatsapp",
+      "label": "Link WhatsApp",
+      "default": "https://wa.me/393534262489"
+    },
+    {
+      "type": "text",
+      "id": "sent",
+      "label": "Messaggio di invio",
+      "default": "Richiesta inviata. Ti rispondiamo a info@rarehubtcg.com."
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Campo nome",
+      "default": "Nome"
+    },
+    {
+      "type": "text",
+      "id": "name_en",
+      "label": "Campo nome in inglese",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Campo email",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_en",
+      "label": "Campo email in inglese",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "reason",
+      "label": "Campo motivo",
+      "default": "Motivo"
+    },
+    {
+      "type": "text",
+      "id": "reason_en",
+      "label": "Campo motivo in inglese",
+      "default": "Reason"
+    },
+    {
+      "type": "text",
+      "id": "opt_events",
+      "label": "Opzione tornei",
+      "default": "Tornei ed eventi"
+    },
+    {
+      "type": "text",
+      "id": "opt_sell",
+      "label": "Opzione vendi",
+      "default": "Vendi la tua collezione"
+    },
+    {
+      "type": "text",
+      "id": "opt_general",
+      "label": "Opzione domanda",
+      "default": "Domanda generale"
+    },
+    {
+      "type": "text",
+      "id": "details",
+      "label": "Campo dettagli",
+      "default": "Dettagli"
+    },
+    {
+      "type": "text",
+      "id": "details_en",
+      "label": "Campo dettagli in inglese",
+      "default": "Details"
+    },
+    {
+      "type": "text",
+      "id": "send",
+      "label": "Pulsante",
+      "default": "Invia richiesta"
+    },
+    {
+      "type": "text",
+      "id": "send_en",
+      "label": "Pulsante in inglese",
+      "default": "Send request"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrivici"
+    }
+  ]
+}
+{% endschema %}
